@@ -38,13 +38,14 @@ map.on('load', function() {
         var coordinates = e.lngLat;
         var owner = e.features[0].properties.OWNER.toLowerCase();
         var value = e.features[0].properties.VALUE;
+        var valperacre = e.features[0].properties.VALPERACRE;
         var town = e.features[0].properties.TOWN.toLowerCase();
 
         // Populate the popup and set its coordinates
         // based on the feature found.
         new mapboxgl.Popup()
             .setLngLat(coordinates)
-            .setHTML('<strong>Owner: </strong><span style="text-transform: capitalize;">' + owner + '<br><strong>Value: </strong>$' + value + '<br><strong>Town: </strong>' + town + '</span>')
+            .setHTML('<strong>Owner: </strong><span style="text-transform: capitalize;">' + owner + '<br><strong>Value: </strong>$' + value + '<br><strong>Value per acre: </strong>$' + Math.round(valperacre) + '<br><strong>Town: </strong>' + town + '</span>')
             .addTo(map);
     });
 
