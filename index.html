@@ -33,6 +33,14 @@ var map = new mapboxgl.Map({
 
 map.on('load', function() {
 
+  map.on('mouseenter', 'statewide-vpa', function() {
+      map.getCanvas().style.cursor = 'pointer';
+  });
+
+  map.on('mouseleave', 'statewide-vpa', function() {
+      map.getCanvas().style.cursor = '';
+  });
+  
     map.on('click', 'statewide-vpa', function(e) {
         // Change the cursor style as a UI indicator.
 
@@ -50,13 +58,6 @@ map.on('load', function() {
             .addTo(map);
     });
 
-    map.on('mouseenter', 'statewide-vpa', function() {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    map.on('mouseleave', 'statewide-vpa', function() {
-        map.getCanvas().style.cursor = '';
-    });
 });
 
 map.addControl(new mapboxgl.NavigationControl());
